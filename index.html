@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitchell Mark · Portfolio</title>
+  <style>
+    :root {
+      --bg: #0f0b1a;
+      --card: #17122a;
+      --primary: #8b5cf6; /* violet */
+      --secondary: #a78bfa; /* light violet */
+      --accent: #c4b5fd; /* lavender */
+      --text: #e9e7f5;
+      --muted: #b8b4d6;
+      --border: rgba(139,92,246,0.25);
+      --glow: rgba(139,92,246,0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(139,92,246,0.15), transparent 40%),
+                  radial-gradient(900px 500px at -10% 10%, rgba(167,139,250,0.12), transparent 35%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1100px;
+      padding: 32px 20px 80px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 18px var(--glow);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 10px;
+    }
+
+    .nav a:hover {
+      background: rgba(139,92,246,0.12);
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139,92,246,0.12);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .gradient {
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 52ch;
+      margin-bottom: 22px;
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: 14px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(139,92,246,0.18), rgba(139,92,246,0.08));
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #0b0816;
+      border: none;
+      box-shadow: 0 10px 30px rgba(139,92,246,0.35);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    .avatar {
+      aspect-ratio: 1 / 1;
+      border-radius: 22px;
+      background: radial-gradient(120px 120px at 30% 20%, rgba(196,181,253,0.35), transparent 40%),
+                  linear-gradient(135deg, rgba(139,92,246,0.35), rgba(167,139,250,0.2));
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    section {
+      margin-bottom: 64px;
+    }
+
+    section h2 {
+      font-size: 26px;
+      margin: 0 0 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project h3 { margin: 0 0 6px; }
+    .project p { color: var(--muted); font-size: 14px; }
+
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(139,92,246,0.14);
+      border: 1px solid var(--border);
+      color: var(--accent);
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="dot"></div>
+        <strong>Mitchell Mark</strong>
+      </div>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div>
+        <span class="badge">✨ Minimal · Interactive · Purple</span>
+        <h1>Building <span class="gradient">clean interfaces</span><br/>and thoughtful software.</h1>
+        <p>
+          Developer focused on elegant UI, solid fundamentals, and projects that balance
+          design with functionality.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="#projects">View Projects</a>
+        </div>
+      </div>
+      <div class="card avatar">
+        MM
+      </div>
+    </div>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <div class="card project">
+          <h3>SafeHaven</h3>
+          <p>Interactive application with strong focus on UX and execution.</p>
+          <div class="tags">
+            <span class="tag">UI/UX</span><span class="tag">Java</span><span class="tag">Desktop</span>
+          </div>
+        </div>
+        <div class="card project">
+          <h3>Language Learning Assistant</h3>
+          <p>AI-powered tool for Korean & Japanese learners with gamified modules.</p>
+          <div class="tags">
+            <span class="tag">AI</span><span class="tag">Education</span><span class="tag">Design</span>
+          </div>
+        </div>
+        <div class="card project">
+          <h3>ML Experiments</h3>
+          <p>Classification and regression projects using tree-based models.</p>
+          <div class="tags">
+            <span class="tag">Machine Learning</span><span class="tag">Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="card">
+        <p>
+          I enjoy crafting minimal, modern interfaces and bringing them to life with
+          thoughtful interactions. My work often blends visual polish with practical
+          engineering.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Email or connect via GitHub to collaborate or chat about projects.</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Mitchell Mark</span>
+      <span>Built with HTML & CSS · Hosted on GitHub Pages</span>
+    </footer>
+  </div>
+</body>
+</html>
